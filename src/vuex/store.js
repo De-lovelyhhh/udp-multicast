@@ -9,8 +9,14 @@ const state = {
   message
 }
 
+const mutations = {
+  user,
+  message
+}
+
 const store = new Vuex.Store({
-  state
+  state,
+  mutations
 })
 
 export default store

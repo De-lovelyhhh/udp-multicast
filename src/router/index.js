@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import CheckBox from '@/components/CheckBox'
+import ChatBox from '@/components/ChatBox'
 
 Vue.use(Router)
 
@@ -8,8 +8,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'CheckBox',
-      component: CheckBox
+      name: 'ChatBox',
+      component: ChatBox
     }
   ]
 })

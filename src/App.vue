@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <img src="./assets/logo.png" alt="">
     <div>
       <p>
         If Element is successfully added to this project, you'll see an
@@ -8,36 +8,35 @@
         below
       </p>
       <el-button @click="record"> 开始录音</el-button>
+      <el-button @click="stopRecord"> 停止录音</el-button>
+      <audio id="record" src="" controls="controls"></audio>
     </div>
   </div>
 </template>
 
 <script>
-import CheckBox from './components/CheckBox.vue'
-
+import ChatBox from './components/ChatBox.vue'
+import { beginRecord, stopRecord} from './lib/recorderTools'
 export default {
   name: 'app',
+  leftDataList: [],
+  rightDataList: [],
   components: {
-    CheckBox
+    ChatBox
   },
   methods:{
+    stopRecord,
     record(){
       window.navigator.mediaDevices.getUserMedia({
         audio: true
       }).then(mediaStream => {
         console.log(mediaStream)
-        this.beginRecord(mediaStream)
+        beginRecord(mediaStream)
       }).catch(err => {
         // 如果用户电脑没有麦克风设备或者用户拒绝了，或者连接出问题了等
         // 这里都会抛异常，并且通过err.name可以知道是哪种类型的错误 
         console.error(err)
       })
-    },
-    beginRecord (mediaStream) {
-      let audioContext = new (window.AudioContext || window.webkitAudioContext);
-      let mediaNode = audioContext.createMediaStreamSource(mediaStream);
-      // 这里connect之后就会自动播放了
-      mediaNode.connect(audioContext.destination);
     },
     initWebSocket(){ //初始化weosocket
       const wsuri = "ws://127.0.0.1:8080";

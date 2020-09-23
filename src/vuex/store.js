@@ -5,12 +5,18 @@ import user from './data/user'
 
 Vue.use(Vuex)
 const state = {
-  user,
-  message
+  user: user.state,
+  message: message.state
+}
+
+const mutations = {
+  ...message.mutations,
+  ...user.mutations
 }
 
 const store = new Vuex.Store({
-  state
+  state,
+  mutations
 })
 
 export default store

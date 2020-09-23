@@ -3,8 +3,8 @@ export default {
     messageList: []
   },
   mutations: {
-    setMessage (obj, insertIndex) {
-      this.state.messageList.splice(insertIndex, 0, obj)
+    setMessage (state, objInfo) {
+      state.message.messageList.splice(objInfo.insertIndex, 0, objInfo.obj)
     }
   }
 }

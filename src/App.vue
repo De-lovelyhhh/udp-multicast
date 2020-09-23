@@ -11,11 +11,11 @@
       <el-button @click="stopRecord"> 停止录音</el-button>
       <audio id="record" src="" controls="controls"></audio>
     </div>
+    <chat-box></chat-box>
   </div>
 </template>
 
 <script>
-import ChatBox from './components/ChatBox.vue'
 import { beginRecord, stopRecord} from './lib/recorderTools'
 export default {
   name: 'app',
@@ -34,7 +34,7 @@ export default {
         beginRecord(mediaStream)
       }).catch(err => {
         // 如果用户电脑没有麦克风设备或者用户拒绝了，或者连接出问题了等
-        // 这里都会抛异常，并且通过err.name可以知道是哪种类型的错误 
+        // 这里都会抛异常，并且通过err.name可以知道是哪种类型的错误
         console.error(err)
       })
     },
@@ -67,12 +67,4 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>

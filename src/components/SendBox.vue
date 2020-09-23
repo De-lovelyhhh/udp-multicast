@@ -1,7 +1,7 @@
 <template>
     <div class="sendbox">
-      <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
-        <el-tab-pane label="文字" name="first">
+      <el-tabs v-model="activeName" type="card">
+        <el-tab-pane label="文字" name="text">
           <el-input
             type="textarea"
             :rows="5"
@@ -9,12 +9,11 @@
             v-model="inputMessage">
           </el-input>
         </el-tab-pane>
-        <el-tab-pane label="对话" name="second">
+        <el-tab-pane label="对话" name="talk">
           <el-button @click="holdToTalk">按住说话</el-button>
         </el-tab-pane>
       </el-tabs>
       <el-button type="send" @click="sendMessage" plain>发送</el-button>
-      <el-button>+</el-button>
     </div>
 </template>
 
@@ -23,7 +22,8 @@ export default {
   name: 'SendBox',
   data () {
     return {
-      inputMessage: ''
+      inputMessage: '',
+      activeName: 'text'
     }
   },
   methods: {
@@ -38,6 +38,9 @@ export default {
 
 <style lang="scss">
 .sendbox {
+  position: absolute;
+  bottom: 0;
+  width: 90%;
   .sendbox-input {
     .el-textarea__inner {
       resize: none;

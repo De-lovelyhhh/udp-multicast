@@ -17,7 +17,7 @@
 import messageItem from './messageItem'
 import SendBox from './SendBox'
 export default {
-  name: 'CheckBox',
+  name: 'ChatBox',
   computed: {
     messageList () {
       return this.$store.state.message.messageList
@@ -42,6 +42,6 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 
 </style>
